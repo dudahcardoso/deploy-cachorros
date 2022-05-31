@@ -1,3 +1,4 @@
+let mensagem = "";
 const express = require("express");
 
 const port = process.env.PORT || 3000;
@@ -36,13 +37,14 @@ let cachorro = undefined; //deixa no escopo global
 
 //passo2-ejs
 app.get("/", (req, res) => {
-  res.render("index", { listaCachorros, cachorro }); //render para renderizar a página HTML
+  res.render("index", { listaCachorros, cachorro, mensagem }); //render para renderizar a página HTML
 });
 
 app.post("/create", (req, res) => {
   const cachorro = req.body; //cria uma const e recebe req.body, o que vier da requisição do cliente ele recebe em cachorro
   cachorro.id = listaCachorros.length + 1;
   listaCachorros.push(cachorro); //listaCachorros é array, push insere um item novo no final do array
+  mensagem = `Cachorro criado com sucesso!`;
   res.redirect("/#cards");
 });
 
@@ -53,17 +55,18 @@ app.get("/detalhes/:id", (req, res) => {
 })
 
 app.post("/update/:id", (req, res) => {
-  const id = +req.params.id -1; //+ string -> number, subtraindo um apra pegar a posição do array
-  const novoCachorro = req.body; //cachorro que vem do body
-  novoCachorro.id = id + 1;
-  listaCachorros[id] = novoCachorro;
+  mensagem = ""; //para não aparecer a mensagem
+  const id = +req.params.id -1; //+ string -> number, subtraindo um para pegar a posição do array
+  const novoCachorro = req.body; //cachorro que vem do body, do input que o cliente entrou com os dados
+  novoCachorro.id = id + 1; //criando um id novo e colocando sempre com + 1 para não bater o número do id
+  listaCachorros[id] = novoCachorro;//colocando meu novo cachorro na lista de cachorros
   cachorro = undefined;//para mostrar o formulário de cadastro
-  res.redirect("/");
+  res.redirect("/#cards");
 });
 
-app.get("/delete/:id", (req, res) => {
-  const id = +req.params.id - 1;
-  delete listaCachorros[id];
+app.get("/delete/:id", (req, res) => {//pegando o id pela rota
+  const id = +req.params.id - 1; //pegando os parametros pelo id via requisição, exemplo: se o id for o 2, ele está na posição 1 por isso subtrai 1 
+  delete listaCachorros[id];//delete o cahorro pelo id
   res.redirect("/#cards");
 });
 

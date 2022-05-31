@@ -1,101 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Cachorros</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <nav>
-        <ul>
-            <!-- <li><img src="/img/nav.jpg" alt="cachorros"></li> -->
-            <li>
-                <a href="/">
-                    <h1>Au Au</h1>
-                </a>
-            </li>
-            <li><a href="#cadastro">Cadastro</a> </li>
-            <li><a href="#cards">Cachorros</a></li>
-        </ul>
+      <ul>
+        <!-- <li><img src="/img/nav.jpg" alt="cachorros"></li> -->
+        <li>
+          <a href="/">
+            <h1>Au Au</h1>
+          </a>
+        </li>
+        <li><a href="#cadastro">Cadastro</a></li>
+        <li><a href="#cards">Cachorros</a></li>
+      </ul>
     </nav>
+
+    <% if(mensagem != ""){ %>
+    <section id="mensagem">
+      <p><%=mensagem%></p>
+      <span id="close">&times;</span>
+    </section>
+    <% } %>
 
     <!-- <header>
         <img src="/img/patinhas3.webp" alt="banner">
     </header> -->
 
     <main>
+      <section id="cadastro">
+        <img src="/img/cachorros.jpg" alt="Cachorros" />
 
-        <section id="cadastro">
+        <div>
+          <% if (cachorro==undefined) { %>
+          <h2>Cadastre um novo Cachorro!</h2>
+          <form action="/create" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required />
+            <label for="raca">Raca:</label>
+            <input type="text" id="raca" name="raca" required />
+            <label for="pelagem">Cor do pelo:</label>
+            <input type="text" id="pelagem" name="pelagem" required />
+            <label for="imagem">Link da Imagem</label>
+            <input type="text" id="imagem" name="imagem" required />
+            <button id="btnCadastrar" type="submit">Cadastrar</button>
+          </form>
+          <% } else { %>
+          <h2>Atualização do Cachorro</h2>
+          <form action="/update/<%= cachorro.id %>" method="POST">
+            <label for="nome">Nome:</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              value="<%= cachorro.nome %>"
+            />
+            <label for="raca">Raca:</label>
+            <input
+              type="text"
+              id="raca"
+              name="raca"
+              value="<%= cachorro.raca %>"
+            />
+            <label for="tipo">Cor do pelo:</label>
+            <input
+              type="text"
+              id="pelagem"
+              name="pelagem"
+              value="<%= cachorro.pelagem %>"
+            />
+            <label for="imagem">Link da Imagem</label>
+            <input
+              type="text"
+              id="imagem"
+              name="imagem"
+              value="<%= cachorro.imagem %>"
+            />
+            <button id="btnAtualizar" type="submit">Atualizar</button>
+          </form>
+          <% } %>
+        </div>
+      </section>
 
-            <img src="/img/cachorros.jpg" alt="Cachorros">
+      <section id="cards">
+        <h2 id="lista">Lista de Cachorros</h2>
 
-            <div>
-                <% if (cachorro==undefined) { %>
-                    <h2>Cadastre um novo Cachorro!</h2>
-                    <form action="/create" method="POST">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" required>
-                        <label for="raca">Raca:</label>
-                        <input type="text" id="raca" name="raca" required >
-                        <label for="pelagem">Cor do pelo:</label>
-                        <input type="text" id="pelagem" name="pelagem" required>
-                        <label for="imagem">Link da Imagem</label>
-                        <input type="text" id="imagem" name="imagem" required>
-                        <button id="btnCadastrar" type="submit">Cadastrar</button>
-                    </form>
-                    <% } else { %>
-                        <h2>Atualização do Cachorro</h2>
-                        <form action="/update/<%= cachorro.id %>" method="POST">
-                            <label for="nome">Nome:</label>
-                            <input type="text" id="nome" name="nome" value="<%= cachorro.nome %>">
-                            <label for="raca">Raca:</label>
-                            <input type="text" id="raca" name="raca" value="<%= cachorro.raca %>">
-                            <label for="tipo">Cor do pelo:</label>
-                            <input type="text" id="pelagem" name="pelagem" value="<%= cachorro.pelagem %>">
-                            <label for="imagem">Link da Imagem</label>
-                            <input type="text" id="imagem" name="imagem" value="<%= cachorro.imagem %>">
-                            <button id="btnAtualizar" type="submit">Atualizar</button>
-                        </form>
-                        <% } %>
-            </div>
-
-        </section>
-
-
-        <section id='cards'>
-
-            <h2 id="lista">Lista de Cachorros</h2>
-
-            <% listaCachorros.forEach((cachorro)=> { %>
-                <div class="card">
-                    <img src="<%= cachorro.imagem %>" alt="">
-                    <h3>
-                        <%= cachorro.nome %>
-                    </h3>
-                    <p class="Raca">
-                        <%= cachorro.raca %>
-                    </p>
-                    <p>Tipo: <%= cachorro.pelagem %>
-                    </p>
-                    <a id="editar" href="/detalhes/<%= cachorro.id %>">Editar</a>
-                    <a id="apagar" href="/delete/<%= cachorro.id %>">Apagar</a>
-                </div>
-                <% }) %>
-
-        </section>
-
+        <% listaCachorros.forEach((cachorro)=> { %>
+        <div class="card">
+          <img src="<%= cachorro.imagem %>" alt="" />
+          <h3><%= cachorro.nome %></h3>
+          <p class="Raca"><%= cachorro.raca %></p>
+          <p>Tipo: <%= cachorro.pelagem %></p>
+          <a id="editar" href="/detalhes/<%= cachorro.id %>">Editar</a>
+          <a id="apagar" href="/delete/<%= cachorro.id %>">Apagar</a>
+        </div>
+        <% }) %>
+      </section>
     </main>
 
     <footer>
-        <p>Todos os direitos resevados para <a target="_blank" href="https://www.linkedin.com/in/maria-eduarda-de-ara%C3%BAjo-cardoso/">Profª Maria Eduarda</a>  &copy;</p>
-        <p>Dados retirados de <a target="_blank" href="https://www.peritoanimal.com.br/racas-de-cachorros.html">Cachorros</a></p>
+      <p>
+        Todos os direitos resevados para
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/maria-eduarda-de-ara%C3%BAjo-cardoso/"
+          >Profª Maria Eduarda</a
+        >
+        &copy;
+      </p>
+      <p>
+        Dados retirados de
+        <a
+          target="_blank"
+          href="https://www.peritoanimal.com.br/racas-de-cachorros.html"
+          >Cachorros</a
+        >
+      </p>
     </footer>
-
-</body>
-
+    <script src="/js/script.js"></script>    
+  </body>
 </html>
