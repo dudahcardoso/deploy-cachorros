@@ -45,10 +45,6 @@ Tecnologias e linguagens utilizadas no projeto:
 * Linguagem: JavaScript e EJS
 * Tecnologias: Express, Nodemon, HTML e CSS
 
-## 🖇️ Colaborando
-
-Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoSobreContribuicoes) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
-
 ## ✒️ Autores
 
 * **Maria Eduarda de Araújo Cardoso** - ([https://github.com/dudahcardoso)])
