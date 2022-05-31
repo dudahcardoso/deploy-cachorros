@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto Slab, Arial;
+}
+
+nav {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  background: rgb(58, 180, 156);
+  background: radial-gradient(
+    circle,
+    rgba(58, 180, 156, 0.38728995015975143) 9%,
+    rgba(29, 253, 190, 1) 42%,
+    rgba(252, 176, 69, 1) 89%
+  );
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+nav ul li {
+  padding: 0.6rem;
+}
+
+nav img {
+  width: 3rem;
+}
+
+nav h1 {
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+header img {
+  margin-top: 3rem;
+  width: 70%;
+  height: 400px;
+}
+
+main {
+  margin: 0 10rem 0 10rem;
+}
+
+section#cards {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+
+section#cards h2#lista {
+  color: #0a6d6a;
+}
+
+section#cards div.card {
+  width: 20rem;
+  box-shadow: 5px 5px 5px 5px #00000015;
+  padding: 1rem;
+  margin: 3rem 0 5rem 0;
+}
+
+section#cards h2 {
+  width: 100%;
+  text-align: center;
+}
+
+section#cards div.card img {
+  width: 100%;
+}
+
+section#cards div.card h3 {
+  margin-bottom: 1rem;
+}
+
+section#cards div.card p.descricao {
+  margin-bottom: 1rem;
+}
+
+section#cards div.card a#editar {
+  padding: 0.6rem;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 1rem;
+  background-color: #fff;
+  border: solid 1px #00fffb;
+  color: #00fffb;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  margin-top: 2rem;
+}
+
+section#cards div.card a#apagar {
+  padding: 0.6rem;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 1rem;
+  background-color: #fff;
+  border: solid 1px #dbb717;
+  color: #dbb717;;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+section#cards div.card a#editar:hover {
+  background-color: #00fffb;
+  color: #fff;
+}
+
+section#cards div.card a#apagar:hover {
+  background-color: #d4ff00;
+  color: #fff;
+}
+
+section#cadastro {
+  display: flex;
+  justify-content: center;
+
+  padding: 5rem;
+}
+
+section#cadastro img {
+  width: 100%;
+}
+
+section#cadastro h2 {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 5rem;
+  color: rgb(109, 109, 109);
+}
+
+section#cadastro form {
+  width: 100%;
+}
+
+section#cadastro form input {
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  outline: none;
+  border: solid 2px rgb(197, 197, 197);
+  margin: 0 1rem 1rem 1rem;
+}
+
+section#cadastro form label {
+  margin: 1rem;
+  color: rgb(148, 148, 148);
+}
+
+section#cadastro form button {
+  padding: 0.6rem;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 1rem;
+  background-color: rgb(80, 158, 155);
+  border: solid 1px rgb(23, 120, 117);
+  color: rgb(231, 244, 242);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+section#cadastro form button:hover {
+  background-color: rgb(231, 244, 242);
+  color: rgb(23, 120, 117);
+}
+
+footer {
+  background-color: rgb(23, 120, 117);;
+  padding: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer p {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 0.3rem;
+}
+
+footer p a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
