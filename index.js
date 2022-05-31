@@ -40,10 +40,9 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create", (req, res) => {
-  const cachorro = req.body; //cria uma const e recebe req.body, o que vier da requisição do cliente ele recebe em pokemon
+  const cachorro = req.body; //cria uma const e recebe req.body, o que vier da requisição do cliente ele recebe em cachorro
   cachorro.id = listaCachorros.length + 1;
-  pokedex.push(cachorro); //pokedex é array, push insere um item novo no final do array
-  // console.log(pokemon);//saída no terminal
+  listaCachorros.push(cachorro); //listaCachorros é array, push insere um item novo no final do array
   res.redirect("/#cards");
 });
 
@@ -54,8 +53,8 @@ app.get("/detalhes/:id", (req, res) => {
 })
 
 app.post("/update/:id", (req, res) => {
-  const id = +req.params.id -1; //+ string -> number, subtraindo um apra pegar a posiçã do array
-  const novoCachorro = req.body; //pokemon que vem do body
+  const id = +req.params.id -1; //+ string -> number, subtraindo um apra pegar a posição do array
+  const novoCachorro = req.body; //cachorro que vem do body
   novoCachorro.id = id + 1;
   listaCachorros[id] = novoCachorro;
   cachorro = undefined;//para mostrar o formulário de cadastro
