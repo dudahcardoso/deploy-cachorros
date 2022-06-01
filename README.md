@@ -1,4 +1,4 @@
-# Lindk do Deploy: https://projeto-cachorros.herokuapp.com/
+# Link do Deploy: https://projeto-cachorros.herokuapp.com/
 
 # POKEDOG
 
